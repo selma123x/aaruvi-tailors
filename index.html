@@ -7,723 +7,672 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tangerine:wght@400;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --cream:#F7F1E8;
-    --blush:#F0DCD0;
-    --maroon:#7A2230;
-    --maroon-dark:#5C1A24;
-    --teal:#1F5C56;
-    --gold:#C08A2E;
-    --ink:#2B3344;
-    --ink-soft:#5B6473;
-    --line:rgba(43,51,68,0.14);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'DM Sans', sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
+:root{
+  --cream:#F7F1E8;
+  --blush:#F0DCD0;
+  --blush-mid:#EAC8B8;
+  --maroon:#7A2230;
+  --maroon-dark:#5C1A24;
+  --teal:#1F5C56;
+  --gold:#C08A2E;
+  --ink:#2B3344;
+  --ink-soft:#5B6473;
+  --line:rgba(43,51,68,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
 
-  .display{font-family:'Cormorant Garamond', serif;}
-  .script{font-family:'Tangerine', cursive; font-weight:700;}
+/* ── TYPOGRAPHY ── */
+.display{font-family:'Cormorant Garamond',serif;}
+em{font-style:italic;}
 
-  .eyebrow{
-    font-family:'DM Sans', sans-serif;
-    font-size:0.72rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--maroon);
-    font-weight:600;
-    margin-bottom:0.6rem;
-    display:flex;
-    align-items:center;
-    gap:0.6rem;
-  }
-  .eyebrow::before{
-    content:'';
-    width:18px;height:1px;
-    background:var(--gold);
-  }
+.eyebrow{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.68rem;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--maroon);
+  font-weight:600;
+  display:flex;align-items:center;gap:0.55rem;
+  margin-bottom:0.75rem;
+}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
 
-  .wrap{max-width:1240px; margin:0 auto; padding:0 6vw;}
+/* ── LAYOUT ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 5vw;}
 
-  /* stitched divider */
-  .stitch-divider{
-    width:100%;
-    height:1px;
-    background-image: linear-gradient(to right, var(--line) 50%, transparent 50%);
-    background-size: 14px 1px;
-    background-repeat: repeat-x;
-  }
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--maroon);color:var(--cream);
+  padding:0.82rem 1.7rem;border-radius:3px;
+  font-size:0.88rem;font-weight:500;
+  border:1.5px solid var(--maroon);
+  transition:background 0.22s,transform 0.18s,color 0.22s;cursor:pointer;
+}
+.btn:hover{background:var(--maroon-dark);transform:translateY(-1px);}
+.btn svg{transition:transform 0.2s;}
+.btn:hover svg{transform:translateX(3px);}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky; top:0; z-index:100;
-    background:rgba(247,241,232,0.92);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:1.1rem 6vw;
-  }
-  .logo{
-    display:flex; align-items:center; gap:0.65rem;
-    font-family:'Cormorant Garamond', serif;
-  }
-  .logo-mark{
-    width:34px;height:34px;
-    border:1.4px solid var(--maroon);
-    border-radius:3px;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--maroon);
-    font-size:1.1rem;
-    flex-shrink:0;
-    transform:rotate(-3deg);
-  }
-  .logo-text{line-height:1.05;}
-  .logo-text .name{font-size:1.5rem; font-weight:600; color:var(--ink);}
-  .logo-text .sub{font-size:0.6rem; letter-spacing:0.25em; color:var(--ink-soft); text-transform:uppercase;}
+.text-link{
+  color:var(--maroon);font-weight:500;font-size:0.9rem;
+  display:inline-flex;align-items:center;gap:0.35rem;
+  border-bottom:1px solid var(--maroon);padding-bottom:1px;
+}
+.text-link svg{transition:transform 0.2s;}
+.text-link:hover svg{transform:translateX(3px);}
 
-  .nav-links{display:flex; align-items:center; gap:2.1rem; font-size:0.92rem;}
-  .nav-links a{position:relative; padding:0.2rem 0; color:var(--ink);}
-  .nav-links a:not(.cta)::after{
-    content:'';
-    position:absolute; left:0; bottom:-3px;
-    width:0; height:1px; background:var(--maroon);
-    transition:width 0.25s ease;
-  }
-  .nav-links a:not(.cta):hover::after{width:100%;}
-  .nav-links a.active{color:var(--maroon);}
+/* ── NAV ── */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,241,232,0.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;}
 
-  .btn{
-    display:inline-flex; align-items:center; gap:0.5rem;
-    background:var(--maroon);
-    color:var(--cream);
-    padding:0.78rem 1.5rem;
-    border-radius:3px;
-    font-size:0.88rem;
-    font-weight:500;
-    border:1px solid var(--maroon);
-    transition:background 0.25s ease, transform 0.2s ease, color 0.25s ease;
-    cursor:pointer;
-  }
-  .btn:hover{background:var(--maroon-dark); transform:translateY(-1px);}
-  .btn-outline{
-    background:transparent; color:var(--maroon); border:1px solid var(--maroon);
-  }
-  .btn-outline:hover{background:var(--maroon); color:var(--cream);}
-  .btn svg{transition:transform 0.25s ease;}
-  .btn:hover svg{transform:translateX(3px);}
+.logo{display:flex;align-items:center;gap:0.6rem;}
+.logo-spool{
+  width:32px;height:38px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;
+}
+.logo-spool .spool-top{width:28px;height:6px;background:var(--maroon);border-radius:3px;}
+.logo-spool .spool-mid{width:18px;height:18px;background:var(--maroon);border-radius:50%;position:relative;}
+.logo-spool .spool-mid::after{content:'';position:absolute;inset:4px;background:var(--cream);border-radius:50%;}
+.logo-spool .spool-bot{width:28px;height:6px;background:var(--maroon);border-radius:3px;}
+.logo-name{font-family:'Cormorant Garamond',serif;}
+.logo-name .name{font-size:1.5rem;font-weight:600;color:var(--ink);line-height:1;}
+.logo-name .sub{font-size:0.55rem;letter-spacing:0.3em;color:var(--ink-soft);text-transform:uppercase;}
 
-  .mobile-toggle{display:none; background:none; border:none; cursor:pointer; padding:0.3rem;}
-  .mobile-toggle svg{width:24px;height:24px;color:var(--ink);}
+.nav-links{display:flex;align-items:center;gap:2rem;font-size:0.9rem;}
+.nav-links a{position:relative;padding:0.2rem 0;color:var(--ink);}
+.nav-links a:not(.btn)::after{
+  content:'';position:absolute;left:0;bottom:-2px;
+  width:0;height:1px;background:var(--maroon);transition:width 0.22s;
+}
+.nav-links a:not(.btn):hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--maroon);}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:5rem 0 4rem;
-    position:relative;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1.15fr;
-    gap:3vw;
-    align-items:center;
-  }
-  .hero-copy h1{
-    font-size:clamp(2.6rem, 5vw, 4.1rem);
-    font-weight:500;
-    line-height:1.06;
-    letter-spacing:-0.01em;
-    color:var(--ink);
-  }
-  .hero-copy h1 em{font-style:italic; color:var(--maroon); font-weight:500;}
-  .hero-copy p.tagline{
-    margin-top:1.4rem;
-    font-size:1.05rem;
-    color:var(--ink-soft);
-    max-width:30ch;
-    line-height:1.6;
-  }
-  .hero-cta-row{margin-top:2.2rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;}
-  .hero-img{
-    border-radius:6px;
-    overflow:hidden;
-    position:relative;
-  }
-  .hero-img img{width:100%; height:auto; object-fit:cover;}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.3rem;}
+.mobile-toggle svg{width:22px;height:22px;color:var(--ink);}
 
-  /* ---------- SECTION COMMON ---------- */
-  section{padding:5.5rem 0;}
-  .section-tint{background:var(--blush);}
-  .section-head{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:3vw;
-    align-items:end;
-    margin-bottom:3rem;
-  }
-  .section-head h2{
-    font-size:clamp(2rem, 3.4vw, 2.9rem);
-    font-weight:500;
-    line-height:1.12;
-    color:var(--ink);
-  }
-  .section-head h2 em{font-style:italic; color:var(--maroon);}
-  .section-head .desc{color:var(--ink-soft); line-height:1.7; font-size:1rem; max-width:42ch;}
+/* ── HERO ── */
+.hero{padding:4.5rem 0 3.5rem;}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:2vw;
+  align-items:center;
+}
+.hero-copy h1{
+  font-size:clamp(2.8rem,5.2vw,4.4rem);
+  font-weight:500;line-height:1.04;
+  letter-spacing:-0.01em;
+  margin-bottom:1.3rem;
+}
+.hero-copy h1 em{color:var(--maroon);}
+.hero-tagline{font-size:0.98rem;color:var(--ink-soft);line-height:1.65;max-width:34ch;margin-bottom:2rem;}
+.hero-img img{width:100%;object-fit:contain;}
 
-  /* ---------- CRAFT ---------- */
-  .craft-grid{
-    display:grid;
-    grid-template-columns:1fr 0.9fr;
-    gap:4vw;
-    align-items:center;
-  }
-  .craft-img{border-radius:6px; overflow:hidden;}
-  .craft-img img{width:100%;}
-  .craft-text h2{
-    font-size:clamp(2.1rem, 3.6vw, 3rem);
-    font-weight:500;
-    line-height:1.1;
-    margin-bottom:1.3rem;
-  }
-  .craft-text h2 em{color:var(--maroon); font-style:italic;}
-  .craft-text p{color:var(--ink-soft); line-height:1.75; max-width:42ch; margin-bottom:1.6rem;}
-  .text-link{
-    color:var(--maroon); font-weight:500; font-size:0.92rem;
-    display:inline-flex; align-items:center; gap:0.4rem;
-    border-bottom:1px solid var(--maroon); padding-bottom:2px;
-  }
-  .text-link svg{transition:transform 0.2s ease;}
-  .text-link:hover svg{transform:translateX(3px);}
+/* ── SECTION COMMON ── */
+section{padding:5rem 0;}
+.bg-blush{background:var(--blush);}
 
-  /* ---------- SERVICES ---------- */
-  .services-grid{
-    display:grid;
-    grid-template-columns:repeat(5, 1fr);
-    gap:1.4rem;
-  }
-  .service-card{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:1.6rem 1.3rem 1.8rem;
-    text-align:center;
-    transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position:relative;
-  }
-  .service-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 34px -16px rgba(43,51,68,0.22);
-    border-color:transparent;
-  }
-  .service-img{
-    width:100%;
-    aspect-ratio:1/1.05;
-    border-radius:5px;
-    overflow:hidden;
-    margin-bottom:1.1rem;
-    background:var(--blush);
-    position:relative;
-  }
-  .service-img img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
-  .service-card:hover .service-img img{transform:scale(1.06);}
-  .swatch-chip{
-    position:absolute; bottom:8px; right:8px;
-    width:22px; height:22px; border-radius:3px;
-    border:1.5px solid rgba(255,255,255,0.85);
-    box-shadow:0 2px 6px rgba(0,0,0,0.15);
-    opacity:0; transform:scale(0.7);
-    transition:all 0.3s ease;
-  }
-  .service-card:hover .swatch-chip{opacity:1; transform:scale(1);}
-  .service-card h3{font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:600; margin-bottom:0.35rem;}
-  .service-card p{font-size:0.82rem; color:var(--ink-soft); line-height:1.5;}
+/* two-col section header: heading left, desc right */
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:end;margin-bottom:3rem;}
+.sh h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:500;line-height:1.1;}
+.sh h2 em{color:var(--maroon);}
+.sh .desc{font-size:0.96rem;color:var(--ink-soft);line-height:1.7;max-width:42ch;}
 
-  /* ---------- PROCESS ---------- */
-  .process-row{
-    display:grid;
-    grid-template-columns:repeat(7, 1fr);
-    gap:0.9rem;
-    position:relative;
-  }
-  .process-step{text-align:center; position:relative;}
-  .process-img{
-    width:84px; height:84px;
-    margin:0 auto 1rem;
-    border-radius:50%;
-    background:var(--cream);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-    transition:border-color 0.3s ease, transform 0.3s ease;
-  }
-  .process-step:hover .process-img{border-color:var(--gold); transform:translateY(-4px);}
-  .process-img img{width:62%; height:62%; object-fit:contain;}
-  .process-step h4{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; margin-bottom:0.3rem;}
-  .process-step p{font-size:0.76rem; color:var(--ink-soft); line-height:1.45;}
-  .process-arrow{
-    position:absolute; top:42px; right:-0.65rem;
-    color:var(--gold); opacity:0.6;
-    font-size:1rem;
-  }
+/* ── CRAFT ── */
+.craft-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5vw;
+  align-items:center;
+}
+.craft-copy h2{font-size:clamp(2.1rem,3.6vw,3.1rem);font-weight:500;line-height:1.1;margin-bottom:1.2rem;}
+.craft-copy h2 em{color:var(--maroon);}
+.craft-copy p{font-size:0.96rem;color:var(--ink-soft);line-height:1.75;max-width:44ch;margin-bottom:1.5rem;}
+.craft-img{position:relative;}
+.craft-img img{width:100%;object-fit:contain;}
 
-  /* ---------- GALLERY ---------- */
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(5, 1fr);
-    gap:1rem;
-  }
-  .gallery-item{
-    aspect-ratio:3/4;
-    border-radius:6px;
-    background:linear-gradient(135deg, #DCD4C6, #C9BFAE);
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-  }
-  .gallery-item::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(to top, rgba(43,51,68,0.35), transparent 45%);
-    opacity:0;
-    transition:opacity 0.3s ease;
-  }
-  .gallery-item:hover::after{opacity:1;}
-  .gallery-item:hover{transform:scale(1.02);}
-  .gallery-item{transition:transform 0.3s ease;}
-  .gallery-label{
-    position:absolute; bottom:10px; left:12px;
-    color:#fff; font-size:0.75rem; letter-spacing:0.05em;
-    opacity:0; transform:translateY(6px);
-    transition:all 0.3s ease;
-  }
-  .gallery-item:hover .gallery-label{opacity:1; transform:translateY(0);}
-  .gallery-foot{display:flex; justify-content:flex-end; margin-top:1.6rem;}
+/* ── SERVICES ── */
+/* 5 floating illustration cards — no box, illustration prominent */
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1.2rem;
+}
+.svc-card{
+  text-align:center;
+  cursor:default;
+}
+.svc-ill{
+  width:100%;
+  aspect-ratio:1/1.1;
+  border-radius:50% 50% 46% 46% / 44% 44% 56% 56%;
+  background:var(--blush);
+  overflow:hidden;
+  margin:0 auto 1rem;
+  position:relative;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+  display:flex;align-items:center;justify-content:center;
+}
+.svc-card:hover .svc-ill{
+  transform:translateY(-6px);
+  box-shadow:0 16px 32px -12px rgba(122,34,48,0.22);
+}
+.svc-ill img{
+  width:88%;height:88%;
+  object-fit:contain;
+  transition:transform 0.4s ease;
+}
+.svc-card:hover .svc-ill img{transform:scale(1.05);}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.3rem;}
+.svc-card p{font-size:0.78rem;color:var(--ink-soft);line-height:1.4;}
 
-  /* ---------- REVIEWS ---------- */
-  .reviews-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1.6rem;
-  }
-  .review-card{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:2.2rem;
-    position:relative;
-  }
-  .quote-mark{
-    font-family:'Cormorant Garamond', serif;
-    font-size:3.4rem;
-    color:var(--gold);
-    line-height:1;
-    margin-bottom:0.6rem;
-    opacity:0.85;
-  }
-  .review-card p.body{font-size:1rem; line-height:1.7; color:var(--ink); margin-bottom:1.3rem; font-family:'Cormorant Garamond', serif; font-size:1.18rem;}
-  .review-foot{display:flex; align-items:center; justify-content:space-between;}
-  .review-name{font-size:0.88rem; font-weight:600; color:var(--ink);}
-  .stars{color:var(--gold); font-size:0.85rem; letter-spacing:1px;}
+/* ── PROCESS ── */
+/* 7 steps in a row, blush circles, arrows between */
+.proc-row{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  align-items:start;
+  gap:0.4rem;
+  position:relative;
+}
+.proc-step{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  position:relative;
+}
+/* arrow between steps (not after last) */
+.proc-step:not(:last-child)::after{
+  content:'›';
+  position:absolute;
+  right:-0.7rem;
+  top:38px;
+  color:var(--gold);
+  font-size:1.4rem;
+  line-height:1;
+  opacity:0.7;
+}
+.proc-circle{
+  width:80px;height:80px;
+  border-radius:50%;
+  background:var(--blush);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  margin-bottom:0.85rem;
+  flex-shrink:0;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.proc-step:hover .proc-circle{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px -8px rgba(122,34,48,0.2);
+}
+.proc-circle img{width:68%;height:68%;object-fit:contain;}
+.proc-step h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.2rem;line-height:1.2;}
+.proc-step p{font-size:0.72rem;color:var(--ink-soft);line-height:1.4;}
 
-  /* ---------- CTA ---------- */
-  .cta-section{
-    padding:6rem 0;
-    position:relative;
-  }
-  .cta-grid{
-    display:grid;
-    grid-template-columns:1.2fr 0.8fr;
-    align-items:center;
-    gap:3vw;
-  }
-  .cta-eyebrow{
-    font-family:'Tangerine', cursive;
-    font-size:2.6rem;
-    color:var(--maroon);
-    line-height:1;
-    margin-bottom:0.4rem;
-  }
-  .cta-grid h2{
-    font-size:clamp(2.2rem, 4vw, 3.3rem);
-    font-weight:500;
-    line-height:1.1;
-    margin-bottom:1.8rem;
-  }
-  .cta-grid h2 em{color:var(--maroon); font-style:italic;}
-  .cta-img{border-radius:6px; overflow:hidden;}
-  .cta-img img{width:100%;}
+/* ── GALLERY ── */
+/* 5 circular-cropped placeholder images in a row */
+.gal-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.4rem;}
+.gal-item{
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:linear-gradient(135deg,#DDD5C8,#C8BDAE);
+  overflow:hidden;
+  position:relative;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+  cursor:pointer;
+}
+.gal-item:hover{
+  transform:scale(1.04);
+  box-shadow:0 14px 28px -10px rgba(43,51,68,0.22);
+}
+.gal-foot{display:flex;justify-content:flex-end;}
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--ink);
-    color:var(--cream);
-    padding:3.6rem 0 1.8rem;
-  }
-  .footer-grid{
-    display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:2rem;
-    padding-bottom:2.4rem;
-    border-bottom:1px solid rgba(247,241,232,0.15);
-  }
-  .footer-logo{display:flex; align-items:center; gap:0.6rem; margin-bottom:0.9rem;}
-  .footer-logo .logo-mark{border-color:var(--gold); color:var(--gold);}
-  .footer-logo .name{font-family:'Cormorant Garamond', serif; font-size:1.4rem; font-weight:600; color:var(--cream);}
-  footer .desc{font-size:0.86rem; color:rgba(247,241,232,0.65); line-height:1.6; max-width:26ch;}
-  footer h5{font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:600;}
-  footer ul{list-style:none;}
-  footer li{margin-bottom:0.7rem;}
-  footer a{font-size:0.88rem; color:rgba(247,241,232,0.75); transition:color 0.2s ease;}
-  footer a:hover{color:var(--gold);}
-  .social-row{display:flex; gap:0.8rem; margin-top:0.2rem;}
-  .social-row a{
-    width:34px;height:34px; border-radius:50%;
-    border:1px solid rgba(247,241,232,0.25);
-    display:flex; align-items:center; justify-content:center;
-    transition:border-color 0.2s ease, background 0.2s ease;
-  }
-  .social-row a:hover{border-color:var(--gold); background:rgba(192,138,46,0.1);}
-  .social-row svg{width:15px; height:15px;}
-  .footer-bottom{
-    display:flex; justify-content:space-between; align-items:center;
-    padding-top:1.6rem;
-    font-size:0.78rem;
-    color:rgba(247,241,232,0.5);
-    flex-wrap:wrap; gap:0.6rem;
-  }
+/* ── REVIEWS ── */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.rev-card{
+  background:var(--cream);
+  border:1px solid rgba(43,51,68,0.1);
+  border-radius:6px;
+  padding:2rem 2rem 1.6rem;
+}
+.bg-blush .rev-card{background:rgba(247,241,232,0.6);}
+.rev-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.2rem;
+  color:var(--gold);
+  line-height:0.9;
+  margin-bottom:0.7rem;
+  opacity:0.9;
+}
+.rev-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.18rem;
+  line-height:1.65;
+  color:var(--ink);
+  margin-bottom:1.2rem;
+}
+.rev-foot{display:flex;justify-content:space-between;align-items:center;}
+.rev-name{font-size:0.85rem;font-weight:600;}
+.rev-stars{color:var(--gold);letter-spacing:1px;font-size:0.82rem;}
 
-  /* ---------- REVEAL ANIMATION ---------- */
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity 0.7s ease, transform 0.7s ease;}
-  .reveal.visible{opacity:1; transform:translateY(0);}
+/* ── CTA ── */
+.cta-inner{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:4vw;
+  align-items:center;
+}
+.cta-copy{text-align:center;}
+.cta-script{
+  font-family:'Tangerine',cursive;
+  font-weight:700;
+  font-size:3rem;
+  color:var(--maroon);
+  line-height:1;
+  margin-bottom:0.1rem;
+}
+.cta-copy h2{
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:500;
+  margin-bottom:1.6rem;
+}
+.cta-copy h2 em{color:var(--maroon);}
+.cta-img{width:260px;flex-shrink:0;}
+.cta-img img{width:100%;object-fit:contain;}
 
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-    *{scroll-behavior:auto !important;}
-  }
+/* ── FOOTER ── */
+footer{background:var(--ink);color:var(--cream);padding:3.5rem 0 1.6rem;}
+.foot-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:2rem;
+  padding-bottom:2.2rem;
+  border-bottom:1px solid rgba(247,241,232,0.12);
+  margin-bottom:1.4rem;
+}
+.foot-logo{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;}
+.foot-logo .logo-spool .spool-top,
+.foot-logo .logo-spool .spool-mid,
+.foot-logo .logo-spool .spool-bot{background:var(--gold);}
+.foot-logo .logo-spool .spool-mid::after{background:var(--ink);}
+.foot-logo .name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--cream);}
+.foot-logo .sub{color:rgba(247,241,232,0.55);}
+.foot-tagline{font-size:0.84rem;color:rgba(247,241,232,0.6);line-height:1.6;max-width:24ch;}
+footer h5{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:0.9rem;}
+footer ul{list-style:none;}
+footer li{margin-bottom:0.6rem;}
+footer a{font-size:0.86rem;color:rgba(247,241,232,0.7);transition:color 0.2s;}
+footer a:hover{color:var(--gold);}
+.social-row{display:flex;gap:0.7rem;}
+.social-btn{
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(247,241,232,0.2);
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.2s,background 0.2s;
+}
+.social-btn:hover{border-color:var(--gold);background:rgba(192,138,46,0.12);}
+.social-btn svg{width:15px;height:15px;}
+.foot-bottom{display:flex;justify-content:space-between;font-size:0.76rem;color:rgba(247,241,232,0.45);flex-wrap:wrap;gap:0.5rem;}
 
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--maroon); outline-offset:3px;
-  }
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.up{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:1080px){
-    .services-grid{grid-template-columns:repeat(3,1fr);}
-    .process-row{grid-template-columns:repeat(4,1fr); row-gap:2.6rem;}
-    .process-step:nth-child(4) .process-arrow{display:none;}
-    .gallery-grid{grid-template-columns:repeat(3,1fr);}
-  }
-  @media (max-width:860px){
-    .nav-links{display:none;}
-    .mobile-toggle{display:block;}
-    .hero-grid{grid-template-columns:1fr; gap:2.5rem;}
-    .hero-img{order:-1;}
-    .craft-grid{grid-template-columns:1fr;}
-    .craft-img{order:-1;}
-    .section-head{grid-template-columns:1fr; gap:1rem;}
-    .cta-grid{grid-template-columns:1fr;}
-    .cta-img{order:-1; max-width:340px; margin:0 auto;}
-    .reviews-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr 1fr; row-gap:2rem;}
-  }
-  @media (max-width:600px){
-    .services-grid{grid-template-columns:repeat(2,1fr);}
-    .process-row{grid-template-columns:repeat(2,1fr);}
-    .process-arrow{display:none;}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
-    .footer-grid{grid-template-columns:1fr;}
-    section{padding:3.6rem 0;}
-    .hero{padding:3rem 0 2.5rem;}
-  }
+a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-offset:3px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .proc-row{grid-template-columns:repeat(4,1fr);gap:1.2rem;row-gap:2.4rem;}
+  .proc-step:nth-child(4)::after{display:none;}
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .gal-row{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .mobile-toggle{display:block;}
+  .hero-grid{grid-template-columns:1fr;gap:2rem;}
+  .hero-img{order:-1;max-width:500px;margin:0 auto;}
+  .sh{grid-template-columns:1fr;gap:0.8rem;}
+  .craft-grid{grid-template-columns:1fr;}
+  .craft-img{order:-1;max-width:380px;margin:0 auto;}
+  .rev-grid{grid-template-columns:1fr;}
+  .cta-inner{grid-template-columns:1fr;justify-items:center;}
+  .cta-img{width:200px;}
+  .foot-grid{grid-template-columns:1fr 1fr;row-gap:2rem;}
+}
+@media(max-width:600px){
+  section{padding:3.5rem 0;}
+  .hero{padding:3rem 0 2.5rem;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-row{grid-template-columns:repeat(2,1fr);row-gap:2rem;}
+  .proc-step::after{display:none;}
+  .gal-row{grid-template-columns:repeat(2,1fr);}
+  .foot-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <header>
-  <nav>
-    <a href="#" class="logo">
-      <span class="logo-mark">A</span>
-      <span class="logo-text">
-        <div class="name">Aaruvi</div>
-        <div class="sub">Tailors</div>
-      </span>
-    </a>
-    <div class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#craft">About</a>
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#process">Process</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact" class="btn">Contact Us</a>
+<nav>
+  <a href="#" class="logo" aria-label="Aaruvi Tailors home">
+    <div class="logo-spool">
+      <div class="spool-top"></div>
+      <div class="spool-mid"></div>
+      <div class="spool-bot"></div>
     </div>
-    <button class="mobile-toggle" aria-label="Menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </nav>
+    <div class="logo-name">
+      <div class="name">Aaruvi</div>
+      <div class="sub">Tailors</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="active">Home</a>
+    <a href="#craft">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#process">Process</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="btn">Contact Us</a>
+  </div>
+  <button class="mobile-toggle" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow">Tailored with Tradition, Stitched with Love</div>
-      <h1 class="display">We design.<br>You define.<br>We <em>create</em>.</h1>
-      <p class="tagline">Aaruvi Tailors — your trusted Tamil tailor, crafting custom outfits that celebrate you, stitch by stitch.</p>
-      <div class="hero-cta-row">
-        <a href="#contact" class="btn">Book Your Fitting
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#services" class="text-link">See our work
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="hero-img reveal">
-      <img src="assets/hero-group.jpg" alt="Illustrated collection of Aaruvi Tailors garments — saree, salwar suit, and embroidered blouse designs">
-    </div>
+<div class="wrap hero-grid">
+  <!-- LEFT: copy -->
+  <div class="hero-copy reveal">
+    <div class="eyebrow">Tailored with Tradition, Stitched with Love</div>
+    <h1 class="display">
+      We design.<br>
+      You define.<br>
+      We <em>create</em>.
+    </h1>
+    <p class="hero-tagline">Aaruvi Tailors — your trusted Tamil tailor, crafting custom outfits that celebrate you.</p>
+    <a href="#contact" class="btn">
+      Book Your Fitting
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
+  <!-- RIGHT: hero group illustration -->
+  <div class="hero-img reveal">
+    <img src="assets/hero-group.jpg" alt="Collection of Aaruvi Tailors garment illustrations — sarees, salwar suits and embroidered blouses">
+  </div>
+</div>
 </section>
 
-<div class="wrap"><div class="stitch-divider"></div></div>
-
-<section id="craft">
-  <div class="wrap craft-grid">
-    <div class="craft-img reveal">
-      <img src="assets/blouse-figure.jpg" alt="Illustration of a woman wearing an embroidered traditional blouse with teal skirt detail">
-    </div>
-    <div class="craft-text reveal">
-      <div class="eyebrow">Our Craft</div>
-      <h2 class="display">Rooted in tradition.<br>Focused on <em>you</em>.</h2>
-      <p>We combine time-honoured Tamil tailoring techniques with modern styles, to create outfits that fit perfectly and feel uniquely yours — from the first measurement to the final stitch.</p>
-      <a href="#process" class="text-link">Know more
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+<!-- CRAFT / ABOUT -->
+<section id="craft" class="bg-blush">
+<div class="wrap craft-grid">
+  <!-- LEFT: text -->
+  <div class="craft-copy reveal">
+    <div class="eyebrow">Our Craft</div>
+    <h2 class="display">Rooted in tradition.<br>Focused on <em>you</em>.</h2>
+    <p>We combine time-honoured Tamil tailoring techniques with modern styles to create outfits that fit perfectly and feel uniquely yours.</p>
+    <a href="#process" class="text-link">Know More
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
+  <!-- RIGHT: illustration of figure with needle -->
+  <div class="craft-img reveal">
+    <img src="assets/blouse-figure.jpg" alt="Illustration of a woman with braided hair holding a needle, wearing an embroidered blouse">
+  </div>
+</div>
 </section>
 
-<section id="services" class="section-tint">
-  <div class="wrap">
-    <div class="section-head reveal">
+<!-- SERVICES -->
+<section id="services">
+<div class="wrap">
+  <div class="sh reveal">
+    <div>
+      <div class="eyebrow">Our Services</div>
       <h2 class="display">Made for every <em>occasion</em>.</h2>
-      <p class="desc">From everyday elegance to once-in-a-lifetime celebrations, every piece is cut, stitched, and fitted around you.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-img"><img src="assets/saree-illustration.jpg" alt="Custom saree with teal, maroon and gold draping"><div class="swatch-chip" style="background:var(--teal);"></div></div>
-        <h3>Sarees</h3>
-        <p>Custom stitching and blouse</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-img"><img src="assets/salwar-illustration.jpg" alt="Tailored salwar suit in cream with embroidered patchwork sleeve"><div class="swatch-chip" style="background:var(--gold);"></div></div>
-        <h3>Salwar Suits</h3>
-        <p>Tailored for the perfect fit</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-img"><img src="assets/lehenga-illustration.jpg" alt="Hand-painted illustration of a maroon and teal lehenga with gold border embroidery"><div class="swatch-chip" style="background:var(--maroon);"></div></div>
-        <h3>Lehenga</h3>
-        <p>Designed for your special moments</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-img"><img src="assets/blouse-gold.jpg" alt="Gold embroidered blouse with lace sleeve detail"><div class="swatch-chip" style="background:var(--gold);"></div></div>
-        <h3>Blouses</h3>
-        <p>From classic to contemporary</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-img"><img src="assets/scissors-needle.jpg" alt="Gold-handled tailoring scissors with threaded needle"><div class="swatch-chip" style="background:var(--ink);"></div></div>
-        <h3>Alterations</h3>
-        <p>Perfecting every detail</p>
-      </div>
+    <p class="desc">From everyday elegance to once-in-a-lifetime celebrations, every piece is cut, stitched and fitted around you.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-ill"><img src="assets/saree-illustration.jpg" alt="Illustrated saree in teal, maroon and gold"></div>
+      <h3>Sarees</h3>
+      <p>Custom stitching and blouse</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ill"><img src="assets/salwar-illustration.jpg" alt="Illustrated salwar suit in teal with gold embroidery"></div>
+      <h3>Salwar Suits</h3>
+      <p>Tailored for the perfect fit</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ill"><img src="assets/lehenga-illustration.jpg" alt="Illustrated maroon and teal lehenga with gold border"></div>
+      <h3>Lehenga</h3>
+      <p>Designed for your special moments</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ill"><img src="assets/blouse-gold.jpg" alt="Gold embroidered blouse with lace sleeve"></div>
+      <h3>Blouses</h3>
+      <p>From classic to contemporary</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ill"><img src="assets/scissors-needle.jpg" alt="Gold-handled tailoring scissors with threaded needle"></div>
+      <h3>Alterations</h3>
+      <p>Perfecting every detail</p>
     </div>
   </div>
+</div>
 </section>
 
-<section id="process">
-  <div class="wrap">
-    <div class="section-head reveal">
+<!-- PROCESS -->
+<section id="process" class="bg-blush">
+<div class="wrap">
+  <div class="sh reveal">
+    <div>
+      <div class="eyebrow">Our Process</div>
       <h2 class="display">From fabric to <em>perfection</em>.</h2>
-      <p class="desc">Every garment follows the same unhurried process — because fit is everything, and craft takes time.</p>
     </div>
-    <div class="process-row">
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/consultation-scene.jpg" alt="Tailor consulting with a client over fabric"></div>
-        <h4>Consultation</h4>
-        <p>Your style, our guidance</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/measuring-tape.jpg" alt="Tailor's measuring tape"></div>
-        <h4>Measurement</h4>
-        <p>Precision is our promise</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/mannequin.jpg" alt="Dressmaker's mannequin with pattern markings"></div>
-        <h4>Design &amp; Pattern</h4>
-        <p>Shaping your vision</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/scissors-lace.jpg" alt="Tailoring scissors on lace fabric"></div>
-        <h4>Cutting</h4>
-        <p>Care in every cut</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/sewing-machine.jpg" alt="Vintage sewing machine"></div>
-        <h4>Stitching</h4>
-        <p>Handcrafted with love</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/blouse-figure-2.jpg" alt="Model fitting an embroidered blouse"></div>
-        <h4>Fitting</h4>
-        <p>Because fit is everything</p>
-        <span class="process-arrow">›</span>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-img"><img src="assets/gown-illustration.jpg" alt="Finished teal and gold draped gown"></div>
-        <h4>Final Touch</h4>
-        <p>Ready for your moment</p>
-      </div>
+    <p class="desc">Every garment follows the same unhurried process — because fit is everything, and craft takes time.</p>
+  </div>
+  <div class="proc-row">
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/consultation-scene.jpg" alt="Tailor consulting with a client"></div>
+      <h4>Consultation</h4>
+      <p>Your style, our guidance</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/measuring-tape.jpg" alt="Tailor's measuring tape"></div>
+      <h4>Measurement</h4>
+      <p>Precision is our promise</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/mannequin.jpg" alt="Dressmaker's mannequin"></div>
+      <h4>Design &amp; Pattern</h4>
+      <p>Shaping your vision</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/scissors-lace.jpg" alt="Tailoring scissors on lace fabric"></div>
+      <h4>Cutting</h4>
+      <p>Care in every cut</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/sewing-machine.jpg" alt="Vintage sewing machine"></div>
+      <h4>Stitching</h4>
+      <p>Handcrafted with love</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/blouse-figure-2.jpg" alt="Garment fitting"></div>
+      <h4>Fitting</h4>
+      <p>Because fit is everything</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-circle"><img src="assets/gown-illustration.jpg" alt="Finished draped gown"></div>
+      <h4>Final Touch</h4>
+      <p>Ready for your moment</p>
     </div>
   </div>
+</div>
 </section>
 
-<section id="gallery" class="section-tint">
-  <div class="wrap">
-    <div class="section-head reveal">
+<!-- GALLERY -->
+<section id="gallery">
+<div class="wrap">
+  <div class="sh reveal">
+    <div>
+      <div class="eyebrow">Our Work</div>
       <h2 class="display">Every stitch tells a <em>story</em>.</h2>
-      <p class="desc">A glimpse of recent work — from bridal commissions to everyday elegance.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item reveal"><span class="gallery-label">Bridal blouse</span></div>
-      <div class="gallery-item reveal"><span class="gallery-label">Wedding lehenga</span></div>
-      <div class="gallery-item reveal"><span class="gallery-label">Festive kurta</span></div>
-      <div class="gallery-item reveal"><span class="gallery-label">Everyday salwar</span></div>
-      <div class="gallery-item reveal"><span class="gallery-label">Reception saree</span></div>
-    </div>
-    <div class="gallery-foot">
-      <a href="#" class="text-link">View gallery
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <p class="desc">A glimpse of recent work — from bridal commissions to everyday elegance.</p>
   </div>
+  <div class="gal-row">
+    <div class="gal-item reveal"></div>
+    <div class="gal-item reveal" style="background:linear-gradient(135deg,#C9BFB2,#B8AC9C);"></div>
+    <div class="gal-item reveal" style="background:linear-gradient(135deg,#D4C8BB,#BFB0A0);"></div>
+    <div class="gal-item reveal" style="background:linear-gradient(135deg,#CFC4B5,#BDB0A0);"></div>
+    <div class="gal-item reveal" style="background:linear-gradient(135deg,#D8CEBC,#C6BAA8);"></div>
+  </div>
+  <div class="gal-foot">
+    <a href="#" class="text-link">View Gallery
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
 </section>
 
-<section id="reviews">
-  <div class="wrap">
-    <div class="section-head reveal">
+<!-- REVIEWS -->
+<section id="reviews" class="bg-blush">
+<div class="wrap">
+  <div class="sh reveal">
+    <div>
+      <div class="eyebrow">Kind Words</div>
       <h2 class="display">Loved by our <em>clients</em>.</h2>
-      <p class="desc">A few kind words from the families and brides we've had the honour of dressing.</p>
     </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="body">The fit, the finish, the fabric — everything was beyond perfect. Aaruvi Tailors truly understands what their customers want.</p>
-        <div class="review-foot">
-          <span class="review-name">— Kavitha R.</span>
-          <span class="stars">★★★★★</span>
-        </div>
+    <p class="desc">A few kind words from the families and brides we've had the honour of dressing.</p>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal">
+      <div class="rev-quote">"</div>
+      <p class="rev-body">The fit, the finish, the fabric — everything was beyond perfect. Aaruvi Tailors truly understands their customers.</p>
+      <div class="rev-foot">
+        <span class="rev-name">— Kavitha R.</span>
+        <span class="rev-stars">★★★★★</span>
       </div>
-      <div class="review-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="body">I got so many compliments on my wedding blouse. Thank you for making my special day even more beautiful.</p>
-        <div class="review-foot">
-          <span class="review-name">— Priya S.</span>
-          <span class="stars">★★★★★</span>
-        </div>
+    </div>
+    <div class="rev-card reveal">
+      <div class="rev-quote">"</div>
+      <p class="rev-body">I got so many compliments! Thank you for making my special day even more beautiful.</p>
+      <div class="rev-foot">
+        <span class="rev-name">— Priya S.</span>
+        <span class="rev-stars">★★★★★</span>
       </div>
     </div>
   </div>
+</div>
 </section>
 
-<section id="contact" class="cta-section section-tint">
-  <div class="wrap cta-grid">
-    <div class="reveal">
-      <div class="cta-eyebrow script">Ready for your perfect fit?</div>
-      <h2 class="display">Let's bring your <em>vision</em> to life.</h2>
-      <a href="#" class="btn">Book Your Fitting
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-    <div class="cta-img reveal">
-      <img src="assets/gown-illustration.jpg" alt="Illustrated teal and gold draped evening gown">
-    </div>
+<!-- CTA -->
+<section id="contact">
+<div class="wrap cta-inner">
+  <div class="cta-copy reveal">
+    <div class="cta-script">Ready for your perfect fit?</div>
+    <h2 class="display">Book a fitting &amp; bring your <em>vision</em> to life.</h2>
+    <a href="#" class="btn">
+      Book Your Fitting
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
+  <div class="cta-img reveal">
+    <img src="assets/gown-illustration.jpg" alt="Teal and gold draped evening gown illustration">
+  </div>
+</div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">
-          <span class="logo-mark">A</span>
-          <span class="name">Aaruvi Tailors</span>
+<div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">
+        <div class="logo-spool">
+          <div class="spool-top"></div>
+          <div class="spool-mid"></div>
+          <div class="spool-bot"></div>
         </div>
-        <p class="desc">Tailored with tradition. Stitched with love.</p>
-      </div>
-      <div>
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="#craft">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>More</h5>
-        <ul>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Follow Us</h5>
-        <div class="social-row">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.6 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.3.4-.2.7-.1l1.8.9c.2.1.4.2.5.3.1.2.1 1-.2 1.5z"/></svg></a>
+        <div class="logo-name">
+          <div class="name">Aaruvi</div>
+          <div class="sub">Tailors</div>
         </div>
       </div>
+      <p class="foot-tagline">Tailored with tradition. Stitched with love.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Aaruvi Tailors. All rights reserved.</span>
-      <span>Harrow, London</span>
+    <div>
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#craft">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>More</h5>
+      <ul>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Follow Us</h5>
+      <div class="social-row">
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:rgba(247,241,232,0.8)"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,241,232,0.8)" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1" fill="rgba(247,241,232,0.8)" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="rgba(247,241,232,0.8)"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.6 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.3.4-.2.7-.1l1.8.9c.2.1.4.2.5.3.1.2.1 1-.2 1.5z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aaruvi Tailors. All rights reserved.</span>
+    <span>Harrow, London</span>
+  </div>
+</div>
 </footer>
 
 <script>
-  // mobile menu toggle
-  const toggle = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  toggle.addEventListener('click', () => {
-    const isOpen = navLinks.style.display === 'flex';
-    if(isOpen){
-      navLinks.style.display = 'none';
-    } else {
-      navLinks.style.cssText = 'display:flex; position:absolute; top:100%; left:0; right:0; background:#F7F1E8; flex-direction:column; padding:1.5rem 6vw; gap:1.2rem; border-bottom:1px solid rgba(43,51,68,0.14); align-items:flex-start;';
-    }
-  });
+// mobile menu
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+mobileToggle.addEventListener('click', () => {
+  const open = navLinks.style.display === 'flex';
+  navLinks.style.cssText = open
+    ? 'display:none'
+    : 'display:flex;position:absolute;top:100%;left:0;right:0;background:rgba(247,241,232,0.97);flex-direction:column;padding:1.4rem 5vw;gap:1rem;border-bottom:1px solid rgba(43,51,68,0.1);align-items:flex-start;z-index:99;backdrop-filter:blur(8px);';
+});
 
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => io.observe(el));
+// scroll reveal
+const revEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('up'); io.unobserve(e.target); }
+  });
+}, { threshold:0.1, rootMargin:'0px 0px -30px 0px' });
+revEls.forEach(el => io.observe(el));
 </script>
 
 </body>
