@@ -380,9 +380,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:860px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  /* hero: proper two-col on tablet, text left motif right */
+  /* hero: two-col, motif fills the full height of the text column */
   .hero{min-height:unset;overflow:hidden;padding:3rem 0 2.5rem;}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4vw;gap:1rem;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0 4vw;gap:1rem;}
   .hero-copy{max-width:100%;position:relative;z-index:3;}
   .hero-img{
     display:block;
@@ -391,12 +391,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
     width:100%;
     z-index:1;
     overflow:hidden;
+    align-self:stretch;
   }
   .hero-img img{
-    width:140%;
-    height:auto;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:left center;
+    display:block;
     min-height:unset;
-    margin-left:-20%;
   }
   /* craft: small image beside text on tablet */
   .sh{grid-template-columns:1fr;gap:0.8rem;}
