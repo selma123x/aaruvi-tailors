@@ -102,10 +102,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
 
 /* ── HERO ── */
 .hero{
-  padding:4.5rem 0 3.5rem;
+  padding:5rem 0 4rem;
   position:relative;
   overflow:hidden;
-  min-height:560px;
+  min-height:580px;
 }
 .hero-grid{
   position:relative;
@@ -114,10 +114,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
   margin:0 auto;
   padding:0 5vw;
 }
+/* text lives in its own column, fully clear of the illustration */
 .hero-copy{
-  max-width:48%;
+  max-width:42%;
   position:relative;
-  z-index:2;
+  z-index:3;
 }
 .hero-copy h1{
   font-size:clamp(2.8rem,5.2vw,4.4rem);
@@ -127,19 +128,22 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
 }
 .hero-copy h1 em{color:var(--maroon);}
 .hero-tagline{font-size:0.98rem;color:var(--ink-soft);line-height:1.65;max-width:34ch;margin-bottom:2rem;}
-/* illustration: absolute right side on desktop only */
+/* illustration: starts at 38% from left, bleeds top and right off-canvas */
 .hero-img{
   position:absolute;
-  top:-2rem;
-  right:-2vw;
-  width:58%;
+  top:-4rem;
+  left:38%;
+  right:-4vw;
+  width:auto;
   z-index:1;
   pointer-events:none;
 }
 .hero-img img{
   width:100%;
   height:auto;
+  min-height:650px;
   object-fit:contain;
+  object-position:left top;
   display:block;
 }
 
