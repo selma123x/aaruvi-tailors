@@ -380,24 +380,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:860px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  /* hero: motif clips in from the right, well below eyebrow */
-  .hero{min-height:unset;overflow:hidden;padding:3.5rem 0 3rem;}
-  .hero-grid{padding:0 5vw;}
+  /* hero: proper two-col on tablet, text left motif right */
+  .hero{min-height:unset;overflow:hidden;padding:3rem 0 2.5rem;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4vw;gap:1rem;}
   .hero-copy{max-width:100%;position:relative;z-index:3;}
   .hero-img{
     display:block;
-    position:absolute;
-    top:3.5rem;
-    left:62%;
-    right:-10%;
-    width:auto;
+    position:relative;
+    top:auto;left:auto;right:auto;
+    width:100%;
     z-index:1;
-    pointer-events:none;
+    overflow:hidden;
   }
   .hero-img img{
-    width:110%;
+    width:140%;
     height:auto;
     min-height:unset;
+    margin-left:-20%;
   }
   /* craft: small image beside text on tablet */
   .sh{grid-template-columns:1fr;gap:0.8rem;}
