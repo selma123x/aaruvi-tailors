@@ -162,8 +162,18 @@ section{padding:5rem 0;}
 .craft-copy h2{font-size:clamp(2.1rem,3.6vw,3.1rem);font-weight:500;line-height:1.1;margin-bottom:1.2rem;}
 .craft-copy h2 em{color:var(--maroon);}
 .craft-copy p{font-size:0.96rem;color:var(--ink-soft);line-height:1.75;max-width:44ch;margin-bottom:1.5rem;}
-.craft-img{position:relative;}
-.craft-img img{width:100%;object-fit:contain;}
+.craft-img{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.craft-img img{
+  max-width:420px;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
 
 /* ── SERVICES ── */
 .svc-grid{
