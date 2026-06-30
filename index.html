@@ -142,25 +142,30 @@ section{padding:5rem 0;}
 .craft-img img{width:100%;object-fit:contain;}
 
 /* ── SERVICES ── */
-/* 4 items; illustrations float free on the background — no container, no background shape */
 .svc-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:1.6rem;
+  gap:2rem;
 }
 .svc-card{text-align:center;}
+/* consistent aspect-ratio box — all 4 arts align at same height, displayed at natural proportions */
 .svc-ill{
   width:100%;
+  aspect-ratio:3/4;
   margin:0 auto 1rem;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:visible;
   transition:transform 0.35s ease;
 }
 .svc-card:hover .svc-ill{transform:translateY(-8px);}
 .svc-ill img{
-  width:100%;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
   height:auto;
-  object-fit:contain;
   display:block;
-  /* let the art breathe — no cropping, no squishing */
 }
 .svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.25rem;}
 .svc-card p{font-size:0.78rem;color:var(--ink-soft);line-height:1.4;}
@@ -477,7 +482,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
       <p>From classic to contemporary</p>
     </div>
     <div class="svc-card reveal">
-      <div class="svc-ill"><img src="assets/scissors-needle.jpg" alt="Gold-handled tailoring scissors with threaded needle"></div>
+      <div class="svc-ill"><img src="assets/scissors-lace.jpg" alt="Ornate gold tailoring scissors on lace fabric"></div>
       <h3>Alterations</h3>
       <p>Perfecting every detail</p>
     </div>
