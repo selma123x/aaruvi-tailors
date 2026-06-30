@@ -156,23 +156,27 @@ section{padding:5rem 0;}
 /* ── CRAFT ── */
 .craft-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5vw;
+  grid-template-columns:1fr 0.55fr;
+  gap:4vw;
   align-items:center;
 }
 .craft-copy h2{font-size:clamp(2.1rem,3.6vw,3.1rem);font-weight:500;line-height:1.1;margin-bottom:1.2rem;}
 .craft-copy h2 em{color:var(--maroon);}
 .craft-copy p{font-size:0.96rem;color:var(--ink-soft);line-height:1.75;max-width:44ch;margin-bottom:1.5rem;}
+/* image column is narrower — art sits at same visual height as the text block */
 .craft-img{
   display:flex;
   align-items:center;
   justify-content:center;
+  max-height:340px;
+  overflow:hidden;
 }
 .craft-img img{
-  max-width:420px;
   width:100%;
   height:auto;
+  max-height:340px;
   object-fit:contain;
+  object-position:center;
   display:block;
 }
 
@@ -370,9 +374,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
   .hero-img{display:none;}
   /* craft: stack, constrain image */
   .sh{grid-template-columns:1fr;gap:0.8rem;}
-  .craft-grid{grid-template-columns:1fr;gap:2rem;}
-  .craft-img{order:-1;max-width:280px;margin:0 auto;}
-  .craft-img img{max-width:280px;}
+  /* craft: image sits beside text on tablet */
+  .craft-grid{grid-template-columns:1fr 0.45fr;gap:1.5rem;align-items:center;}
+  .craft-img{max-height:220px;overflow:hidden;}
+  .craft-img img{max-height:220px;width:auto;max-width:100%;}
   .rev-grid{grid-template-columns:1fr;}
   .cta-inner{grid-template-columns:1fr;justify-items:center;}
   .cta-img{width:200px;}
@@ -381,6 +386,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:600px){
   section{padding:3.5rem 0;}
   .hero{padding:3rem 0 2.5rem;}
+  .craft-grid{grid-template-columns:1fr;gap:1rem;}
+  .craft-img{order:-1;max-height:180px;overflow:hidden;margin:0 auto;}
+  .craft-img img{max-height:180px;width:auto;}
   /* services: single horizontal scroll line */
   .svc-grid{
     display:flex;
