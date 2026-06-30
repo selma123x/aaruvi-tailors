@@ -380,31 +380,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:860px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  /* hero: text full width, motif bleeds in from right edge */
+  /* hero: motif clips in from the right, well below eyebrow */
   .hero{min-height:unset;overflow:hidden;padding:3.5rem 0 3rem;}
   .hero-grid{padding:0 5vw;}
   .hero-copy{max-width:100%;position:relative;z-index:3;}
   .hero-img{
     display:block;
     position:absolute;
-    top:0;
-    left:55%;
-    right:-20%;
+    top:3.5rem;
+    left:62%;
+    right:-10%;
     width:auto;
     z-index:1;
     pointer-events:none;
   }
   .hero-img img{
-    width:130%;
+    width:110%;
     height:auto;
     min-height:unset;
   }
-  /* craft: stack, constrain image */
+  /* craft: small image beside text on tablet */
   .sh{grid-template-columns:1fr;gap:0.8rem;}
-  /* craft: image sits beside text on tablet */
-  .craft-grid{grid-template-columns:1fr 0.45fr;gap:1.5rem;align-items:center;}
-  .craft-img{max-height:220px;overflow:hidden;}
-  .craft-img img{max-height:220px;width:auto;max-width:100%;}
+  .craft-grid{grid-template-columns:1fr 0.35fr;gap:1.5rem;align-items:center;}
+  .craft-img{max-height:180px;overflow:hidden;}
+  .craft-img img{max-height:180px;width:auto;max-width:100%;}
   .rev-grid{grid-template-columns:1fr;}
   .cta-inner{grid-template-columns:1fr;justify-items:center;}
   .cta-img{width:200px;}
