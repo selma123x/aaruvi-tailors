@@ -105,9 +105,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
   padding:4.5rem 0 3.5rem;
   position:relative;
   overflow:hidden;
-  min-height:540px;
+  min-height:560px;
 }
-/* desktop: text floats left, illustration is absolute on the right */
 .hero-grid{
   position:relative;
   z-index:2;
@@ -116,7 +115,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
   padding:0 5vw;
 }
 .hero-copy{
-  max-width:50%;
+  max-width:48%;
+  position:relative;
+  z-index:2;
 }
 .hero-copy h1{
   font-size:clamp(2.8rem,5.2vw,4.4rem);
@@ -126,7 +127,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
 }
 .hero-copy h1 em{color:var(--maroon);}
 .hero-tagline{font-size:0.98rem;color:var(--ink-soft);line-height:1.65;max-width:34ch;margin-bottom:2rem;}
-/* illustration: absolute right side, fills the space naturally */
+/* illustration: absolute right side on desktop only */
 .hero-img{
   position:absolute;
   top:-2rem;
@@ -371,13 +372,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:860px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  .hero{min-height:unset;overflow:visible;padding:3rem 0 2rem;}
-  .hero-grid{display:flex;flex-direction:column;gap:1.5rem;padding:0 5vw;}
+  /* hero: text full width, image hidden on mobile */
+  .hero{min-height:unset;overflow:hidden;padding:3.5rem 0 3rem;}
+  .hero-grid{padding:0 5vw;}
   .hero-copy{max-width:100%;}
-  .hero-img{position:relative;top:auto;right:auto;width:100%;max-width:420px;margin:0 auto;}
+  .hero-img{display:none;}
+  /* craft: stack, constrain image */
   .sh{grid-template-columns:1fr;gap:0.8rem;}
-  .craft-grid{grid-template-columns:1fr;}
-  .craft-img{order:-1;max-width:380px;margin:0 auto;}
+  .craft-grid{grid-template-columns:1fr;gap:2rem;}
+  .craft-img{order:-1;max-width:280px;margin:0 auto;}
+  .craft-img img{max-width:280px;}
   .rev-grid{grid-template-columns:1fr;}
   .cta-inner{grid-template-columns:1fr;justify-items:center;}
   .cta-img{width:200px;}
