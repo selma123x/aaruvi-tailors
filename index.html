@@ -84,9 +84,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 5
 .logo-spool .spool-mid{width:18px;height:18px;background:var(--maroon);border-radius:50%;position:relative;}
 .logo-spool .spool-mid::after{content:'';position:absolute;inset:4px;background:var(--cream);border-radius:50%;}
 .logo-spool .spool-bot{width:28px;height:6px;background:var(--maroon);border-radius:3px;}
-.logo-name{font-family:'Cormorant Garamond',serif;}
-.logo-name .name{font-size:1.5rem;font-weight:600;color:var(--ink);line-height:1;}
-.logo-name .sub{font-size:0.55rem;letter-spacing:0.3em;color:var(--ink-soft);text-transform:uppercase;}
+.logo-name{font-family:'Cormorant Garamond',serif;display:flex;align-items:baseline;gap:0.4rem;}
+.logo-name .name{font-size:1.55rem;font-weight:600;color:var(--ink);line-height:1;}
+.logo-name .sub{font-size:0.82rem;font-weight:400;letter-spacing:0.14em;color:var(--ink-soft);text-transform:uppercase;line-height:1;}
 
 .nav-links{display:flex;align-items:center;gap:2rem;font-size:0.9rem;}
 .nav-links a{position:relative;padding:0.2rem 0;color:var(--ink);}
@@ -142,80 +142,57 @@ section{padding:5rem 0;}
 .craft-img img{width:100%;object-fit:contain;}
 
 /* ── SERVICES ── */
-/* 5 floating illustration cards — no box, illustration prominent */
+/* 4 items; illustrations float free on the background — no container, no background shape */
 .svc-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:1.2rem;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.6rem;
 }
-.svc-card{
-  text-align:center;
-  cursor:default;
-}
+.svc-card{text-align:center;}
 .svc-ill{
   width:100%;
-  aspect-ratio:1/1.1;
-  border-radius:50% 50% 46% 46% / 44% 44% 56% 56%;
-  background:var(--blush);
-  overflow:hidden;
-  margin:0 auto 1rem;
-  position:relative;
-  transition:transform 0.3s ease,box-shadow 0.3s ease;
-  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 0.9rem;
+  transition:transform 0.3s ease;
 }
-.svc-card:hover .svc-ill{
-  transform:translateY(-6px);
-  box-shadow:0 16px 32px -12px rgba(122,34,48,0.22);
-}
-.svc-ill img{
-  width:88%;height:88%;
-  object-fit:contain;
-  transition:transform 0.4s ease;
-}
-.svc-card:hover .svc-ill img{transform:scale(1.05);}
-.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.3rem;}
+.svc-card:hover .svc-ill{transform:translateY(-7px);}
+.svc-ill img{width:100%;height:auto;object-fit:contain;display:block;}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.25rem;}
 .svc-card p{font-size:0.78rem;color:var(--ink-soft);line-height:1.4;}
 
 /* ── PROCESS ── */
-/* 7 steps in a row, blush circles, arrows between */
+/* 6 steps; icons float free — no circle container, seamless to background */
 .proc-row{
   display:grid;
-  grid-template-columns:repeat(7,1fr);
+  grid-template-columns:repeat(6,1fr);
   align-items:start;
-  gap:0.4rem;
+  gap:0.6rem;
   position:relative;
 }
 .proc-step{
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
   position:relative;
+  transition:transform 0.3s ease;
 }
-/* arrow between steps (not after last) */
+.proc-step:hover{transform:translateY(-5px);}
 .proc-step:not(:last-child)::after{
   content:'›';
   position:absolute;
-  right:-0.7rem;
-  top:38px;
+  right:-0.6rem;
+  top:40px;
   color:var(--gold);
-  font-size:1.4rem;
+  font-size:1.3rem;
   line-height:1;
-  opacity:0.7;
+  opacity:0.65;
 }
-.proc-circle{
-  width:80px;height:80px;
-  border-radius:50%;
-  background:var(--blush);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-  margin-bottom:0.85rem;
+/* icon floats free — no circle, no background */
+.proc-icon{
+  width:90px;height:90px;
+  margin-bottom:0.9rem;
   flex-shrink:0;
-  transition:transform 0.3s ease,box-shadow 0.3s ease;
+  display:flex;align-items:center;justify-content:center;
 }
-.proc-step:hover .proc-circle{
-  transform:translateY(-4px);
-  box-shadow:0 10px 24px -8px rgba(122,34,48,0.2);
-}
-.proc-circle img{width:68%;height:68%;object-fit:contain;}
+.proc-icon img{width:100%;height:100%;object-fit:contain;display:block;}
 .proc-step h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.2rem;line-height:1.2;}
 .proc-step p{font-size:0.72rem;color:var(--ink-soft);line-height:1.4;}
 
@@ -333,9 +310,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
-  .proc-row{grid-template-columns:repeat(4,1fr);gap:1.2rem;row-gap:2.4rem;}
-  .proc-step:nth-child(4)::after{display:none;}
-  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .proc-row{grid-template-columns:repeat(3,1fr);gap:1.2rem;row-gap:2.8rem;}
+  .proc-step:nth-child(3)::after,.proc-step:nth-child(6)::after{display:none;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
   .gal-row{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:860px){
@@ -354,8 +331,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:600px){
   section{padding:3.5rem 0;}
   .hero{padding:3rem 0 2.5rem;}
-  .svc-grid{grid-template-columns:repeat(2,1fr);}
-  .proc-row{grid-template-columns:repeat(2,1fr);row-gap:2rem;}
+  /* services: single horizontal scroll line */
+  .svc-grid{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:1.2rem;
+    padding-bottom:0.8rem;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .svc-grid::-webkit-scrollbar{display:none;}
+  .svc-card{min-width:140px;flex-shrink:0;}
+  /* process: single horizontal scroll line */
+  .proc-row{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:1rem;
+    padding-bottom:0.8rem;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:unset;
+  }
+  .proc-row::-webkit-scrollbar{display:none;}
+  .proc-step{min-width:100px;flex-shrink:0;}
   .proc-step::after{display:none;}
   .gal-row{grid-template-columns:repeat(2,1fr);}
   .foot-grid{grid-template-columns:1fr;}
@@ -458,11 +458,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
       <p>Tailored for the perfect fit</p>
     </div>
     <div class="svc-card reveal">
-      <div class="svc-ill"><img src="assets/lehenga-illustration.jpg" alt="Illustrated maroon and teal lehenga with gold border"></div>
-      <h3>Lehenga</h3>
-      <p>Designed for your special moments</p>
-    </div>
-    <div class="svc-card reveal">
       <div class="svc-ill"><img src="assets/blouse-gold.jpg" alt="Gold embroidered blouse with lace sleeve"></div>
       <h3>Blouses</h3>
       <p>From classic to contemporary</p>
@@ -488,39 +483,34 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
   </div>
   <div class="proc-row">
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/consultation-scene.jpg" alt="Tailor consulting with a client"></div>
+      <div class="proc-icon"><img src="assets/consultation-scene.jpg" alt="Tailor consulting with a client"></div>
       <h4>Consultation</h4>
       <p>Your style, our guidance</p>
     </div>
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/measuring-tape.jpg" alt="Tailor's measuring tape"></div>
+      <div class="proc-icon"><img src="assets/measuring-tape.jpg" alt="Tailor's measuring tape"></div>
       <h4>Measurement</h4>
       <p>Precision is our promise</p>
     </div>
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/mannequin.jpg" alt="Dressmaker's mannequin"></div>
+      <div class="proc-icon"><img src="assets/mannequin.jpg" alt="Dressmaker's mannequin"></div>
       <h4>Design &amp; Pattern</h4>
       <p>Shaping your vision</p>
     </div>
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/scissors-lace.jpg" alt="Tailoring scissors on lace fabric"></div>
+      <div class="proc-icon"><img src="assets/scissors-lace.jpg" alt="Tailoring scissors on lace fabric"></div>
       <h4>Cutting</h4>
       <p>Care in every cut</p>
     </div>
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/sewing-machine.jpg" alt="Vintage sewing machine"></div>
+      <div class="proc-icon"><img src="assets/sewing-machine.jpg" alt="Vintage sewing machine"></div>
       <h4>Stitching</h4>
       <p>Handcrafted with love</p>
     </div>
     <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/blouse-figure-2.jpg" alt="Garment fitting"></div>
+      <div class="proc-icon"><img src="assets/blouse-figure-2.jpg" alt="Garment fitting"></div>
       <h4>Fitting</h4>
       <p>Because fit is everything</p>
-    </div>
-    <div class="proc-step reveal">
-      <div class="proc-circle"><img src="assets/gown-illustration.jpg" alt="Finished draped gown"></div>
-      <h4>Final Touch</h4>
-      <p>Ready for your moment</p>
     </div>
   </div>
 </div>
