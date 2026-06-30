@@ -380,9 +380,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
 @media(max-width:860px){
   .nav-links{display:none;}
   .mobile-toggle{display:block;}
-  /* hero: two-col, motif fills the full height of the text column */
-  .hero{min-height:unset;overflow:hidden;padding:3rem 0 2.5rem;}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0 4vw;gap:1rem;}
+  /* hero: no eyebrow, h1 flush top, motif bleeds full height + right edge */
+  .hero{min-height:unset;overflow:hidden;padding:1.5rem 0 1.5rem;}
+  .hero .eyebrow{display:none;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0 0 0 4vw;gap:0.5rem;}
   .hero-copy{max-width:100%;position:relative;z-index:3;}
   .hero-img{
     display:block;
@@ -390,14 +391,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
     top:auto;left:auto;right:auto;
     width:100%;
     z-index:1;
-    overflow:hidden;
+    overflow:visible;
     align-self:stretch;
+    margin-right:0;
   }
   .hero-img img{
-    width:100%;
+    width:140%;
     height:100%;
     object-fit:cover;
-    object-position:left center;
+    object-position:left top;
     display:block;
     min-height:unset;
   }
