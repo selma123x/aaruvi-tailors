@@ -218,20 +218,18 @@ section{padding:5rem 0;}
   content:'›';
   position:absolute;
   right:-0.6rem;
-  top:40px;
+  top:30%;
   color:var(--gold);
   font-size:1.3rem;
   line-height:1;
   opacity:0.65;
 }
-/* icon floats free — no circle, no background */
+/* art renders freely — no fixed box, transparent areas ignored */
 .proc-icon{
-  width:130px;
-  height:130px;
   margin:0 auto 1rem;
   flex-shrink:0;
 }
-.proc-icon img{width:100%;height:100%;object-fit:contain;display:block;}
+.proc-icon img{width:100%;height:auto;display:block;}
 .proc-step h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.2rem;line-height:1.2;}
 .proc-step p{font-size:0.72rem;color:var(--ink-soft);line-height:1.4;}
 
