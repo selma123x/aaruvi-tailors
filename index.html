@@ -151,11 +151,17 @@ section{padding:5rem 0;}
 .svc-card{text-align:center;}
 .svc-ill{
   width:100%;
-  margin:0 auto 0.9rem;
-  transition:transform 0.3s ease;
+  margin:0 auto 1rem;
+  transition:transform 0.35s ease;
 }
-.svc-card:hover .svc-ill{transform:translateY(-7px);}
-.svc-ill img{width:100%;height:auto;object-fit:contain;display:block;}
+.svc-card:hover .svc-ill{transform:translateY(-8px);}
+.svc-ill img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  /* let the art breathe — no cropping, no squishing */
+}
 .svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.25rem;}
 .svc-card p{font-size:0.78rem;color:var(--ink-soft);line-height:1.4;}
 
@@ -187,31 +193,37 @@ section{padding:5rem 0;}
 }
 /* icon floats free — no circle, no background */
 .proc-icon{
-  width:90px;height:90px;
-  margin-bottom:0.9rem;
+  width:130px;
+  height:130px;
+  margin:0 auto 1rem;
   flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
 }
 .proc-icon img{width:100%;height:100%;object-fit:contain;display:block;}
 .proc-step h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.2rem;line-height:1.2;}
 .proc-step p{font-size:0.72rem;color:var(--ink-soft);line-height:1.4;}
 
 /* ── GALLERY ── */
-/* 5 circular-cropped placeholder images in a row */
-.gal-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.4rem;}
+/* 4 photos: single row on desktop, 2x2 on mobile */
+.gal-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+  margin-bottom:1.4rem;
+}
 .gal-item{
-  aspect-ratio:1/1;
-  border-radius:50%;
-  background:linear-gradient(135deg,#DDD5C8,#C8BDAE);
   overflow:hidden;
+  border-radius:4px;
   position:relative;
-  transition:transform 0.3s ease,box-shadow 0.3s ease;
   cursor:pointer;
 }
-.gal-item:hover{
-  transform:scale(1.04);
-  box-shadow:0 14px 28px -10px rgba(43,51,68,0.22);
+.gal-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.5s ease;
 }
+.gal-item:hover img{transform:scale(1.04);}
 .gal-foot{display:flex;justify-content:flex-end;}
 
 /* ── REVIEWS ── */
@@ -313,7 +325,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
   .proc-row{grid-template-columns:repeat(3,1fr);gap:1.2rem;row-gap:2.8rem;}
   .proc-step:nth-child(3)::after,.proc-step:nth-child(6)::after{display:none;}
   .svc-grid{grid-template-columns:repeat(2,1fr);}
-  .gal-row{grid-template-columns:repeat(3,1fr);}
+  .gal-row{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:860px){
   .nav-links{display:none;}
@@ -357,7 +369,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
   .proc-row::-webkit-scrollbar{display:none;}
   .proc-step{min-width:100px;flex-shrink:0;}
   .proc-step::after{display:none;}
-  .gal-row{grid-template-columns:repeat(2,1fr);}
+  .gal-row{grid-template-columns:repeat(2,1fr);gap:0.6rem;}
   .foot-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -527,11 +539,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--maroon);outline-off
     <p class="desc">A glimpse of recent work — from bridal commissions to everyday elegance.</p>
   </div>
   <div class="gal-row">
-    <div class="gal-item reveal"></div>
-    <div class="gal-item reveal" style="background:linear-gradient(135deg,#C9BFB2,#B8AC9C);"></div>
-    <div class="gal-item reveal" style="background:linear-gradient(135deg,#D4C8BB,#BFB0A0);"></div>
-    <div class="gal-item reveal" style="background:linear-gradient(135deg,#CFC4B5,#BDB0A0);"></div>
-    <div class="gal-item reveal" style="background:linear-gradient(135deg,#D8CEBC,#C6BAA8);"></div>
+    <div class="gal-item reveal"><img src="assets/gallery-1.jpg" alt="Tailor measuring a client wearing a crimson saree with gold border"></div>
+    <div class="gal-item reveal"><img src="assets/gallery-2.jpg" alt="Crimson silk saree with gold zari border draped on a mannequin"></div>
+    <div class="gal-item reveal"><img src="assets/gallery-3.jpg" alt="Delicate pink net saree with white floral embroidery on a mannequin"></div>
+    <div class="gal-item reveal"><img src="assets/gallery-4.jpg" alt="Client being fitted for a mustard blouse and purple saree in the studio"></div>
   </div>
   <div class="gal-foot">
     <a href="#" class="text-link">View Gallery
